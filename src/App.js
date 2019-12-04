@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import { pets } from './data/pets.json';
-// const pets = importData.pets;
+//const pets = importData.pets;
 
 class App extends Component {
   constructor(props) {
@@ -22,11 +22,21 @@ class App extends Component {
     console.log(pets);
   }
 
+  selectPet = (id) => {
+    const pet = pets.find((pet) => pet.id === id)
 
+    this.setState({currentPet: pet})
+  }
+
+  removePet = (id) => {
+    const updatedPets = this.state.petList.filter((pet) => pet.id !== id)
+
+    this.setState({petList: updatedPets})
+  }
 
 
   render () {
-    const { currentPet } = this.state;
+    const { currentPet, petList } = this.state;
 
     return (
       <main className="App">
@@ -37,9 +47,12 @@ class App extends Component {
           { /* Wave 4:  Place to add the SearchBar component */}
           <SearchBar />
         </section>
-        { /* Wave 2:  Where Pet Details should appear */}
+        {/* Wave 2:  Where Pet Details should appear */}
+        {currentPet !== undefined ? <PetDetails currentPet = {currentPet} /> : <p>'No Pet Selected'</p>}
+  
         <section className="pet-list-wrapper">
           { /* Wave 1:  Where PetList should appear */}
+          <PetList pets={petList} selectCallback={this.selectPet} removeCallback={this.removePet}/>
         </section>
         <section className="new-pet-form-wrapper">
           { /* Wave 3:  Where NewPetForm should appear */}
