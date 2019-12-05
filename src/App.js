@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PetList from './components/PetList';
-import PetCard from './components/PetCard'
 import PetDetails from './components/PetDetails';
 import SearchBar from './components/SearchBar';
 import NewPetForm from './components/NewPetForm';
@@ -19,23 +18,35 @@ class App extends Component {
       petList: pets,
       currentPet: undefined,
     };
-    console.log(pets);
+    //console.log(pets);
   }
 
   selectPet = (id) => {
-    const pet = pets.find((pet) => pet.id === id)
+    const pet = this.state.petList.find((pet) => pet.id == id)
 
     this.setState({currentPet: pet})
   }
 
   removePet = (id) => {
     const updatedPets = this.state.petList.filter((pet) => pet.id !== id)
-
+    
     this.setState({petList: updatedPets})
   }
 
+  incrementId = () =>{
+    const pets = this.state.petList
+    let ids = pets.map((pet) => {
+      return parseInt(pet.id, 10)
+    })
+
+    const newId = Math.max(...ids) + 1
+    return newId
+  }
+
   addPet = (newPet) =>{
-    const updatedPets = this.state.petList.push(newPet)
+    newPet.id = this.incrementId()
+    const updatedPets = this.state.petList.concat(newPet)
+    console.log(updatedPets)
 
     this.setState({petList: updatedPets})
   } 

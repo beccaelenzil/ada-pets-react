@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const PetList = (props) => {
 
     const petCollection = props.pets.map((pet, i) => {
-      return <PetCard id={pet.id} name={pet.name} species={pet.species} about={pet.about} location={pet.location} selectCallback={(id)=> props.selectCallback(id)} removeCallback={(id) => props.removeCallback(id)}/> 
+      return <PetCard key={i} id={pet.id} name={pet.name} species={pet.species} about={pet.about} location={pet.location} selectCallback={(id)=> props.selectCallback(id)} removeCallback={(id) => props.removeCallback(id)}/> 
     }
     );
 

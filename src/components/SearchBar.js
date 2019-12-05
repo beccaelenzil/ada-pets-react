@@ -6,10 +6,10 @@ import './SearchBar.css';
 
 class SearchBar extends Component {
 
-  constructor(props) {
+  /*constructor(props) {
     super(props);
 
-  }
+  }*/
 
   render() {
     return (
@@ -19,8 +19,8 @@ class SearchBar extends Component {
   }
 };
 
-SearchBar.propTypes = {
+/*SearchBar.propTypes = {
   
-};
+};*/
 
 export default SearchBar;

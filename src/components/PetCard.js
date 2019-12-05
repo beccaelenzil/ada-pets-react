@@ -43,10 +43,11 @@ const PetCard = (props) => {
 PetCard.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired, 
-  species: PropTypes.string.isRequired, 
+  species: PropTypes.string, 
   about: PropTypes.string, 
   location: PropTypes.string,
   selectCallback: PropTypes.func,
+  removeCallback: PropTypes.func,
 }
     
 export default PetCard;
