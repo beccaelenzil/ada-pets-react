@@ -34,6 +34,11 @@ class App extends Component {
     this.setState({petList: updatedPets})
   }
 
+  addPet = (newPet) =>{
+    const updatedPets = this.state.petList.push(newPet)
+
+    this.setState({petList: updatedPets})
+  } 
 
   render () {
     const { currentPet, petList } = this.state;
@@ -56,6 +61,7 @@ class App extends Component {
         </section>
         <section className="new-pet-form-wrapper">
           { /* Wave 3:  Where NewPetForm should appear */}
+          <NewPetForm addPetCallback={this.addPet}/>
         </section>
       </main>
     );
@@ -63,3 +69,5 @@ class App extends Component {
 }
 
 export default App;
+
+
